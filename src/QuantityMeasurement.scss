@@ -1,0 +1,281 @@
+$primary: #3a0ca3;
+$primary-light: #4c1fc9;
+$primary-faint: #f3f0ff;
+$primary-border: #c4b5fd;
+$primary-muted: #7c3aed;
+$text-dark: #1a1a2e;
+$text-mid: #444;
+$text-light: #888;
+$text-table: #333;
+$border: #e5e5ee;
+$input-border: #d0d0dd;
+$input-bg: #fafafa;
+$tab-bg: #f0f0f5;
+$tab-hover: #e0e0eb;
+$error-bg: #fff0f0;
+$error-border: #fca5a5;
+$error-text: #b91c1c;
+$th-bg: #f0eeff;
+$th-border: #e0d9ff;
+$row-hover: #faf8ff;
+
+@mixin flex-col($gap: 0) {
+  display: flex;
+  flex-direction: column;
+  gap: $gap;
+}
+
+@mixin flex-row($gap: 0, $align: stretch) {
+  display: flex;
+  flex-direction: row;
+  gap: $gap;
+  align-items: $align;
+}
+
+@mixin rounded($radius: 8px) {
+  border-radius: $radius;
+}
+
+@mixin transition($props: all, $duration: 0.2s) {
+  transition: $props $duration;
+}
+
+@mixin input-base {
+  padding: 10px 12px;
+  border: 1px solid $input-border;
+  @include rounded(8px);
+  font-size: 15px;
+  color: $text-dark;
+  background: $input-bg;
+  outline: none;
+  @include transition(border-color);
+  width: 100%;
+
+  &:focus {
+    border-color: $primary;
+    background: #fff;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.qm-container {
+  max-width: 820px;
+  margin: 40px auto;
+  padding: 0 20px 60px;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.qm-header {
+  text-align: center;
+  margin-bottom: 32px;
+
+  .qm-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: $text-dark;
+    margin: 0 0 6px;
+    letter-spacing: -0.5px;
+  }
+
+  .qm-subtitle {
+    font-size: 14px;
+    color: $text-light;
+    margin: 0;
+  }
+}
+
+.qm-tabs {
+  @include flex-row(6px, center);
+  background: $tab-bg;
+  padding: 6px;
+  @include rounded(12px);
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+
+  .qm-tab {
+    flex: 1;
+    padding: 10px 14px;
+    border: none;
+    @include rounded(8px);
+    background: transparent;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+    cursor: pointer;
+    @include transition(background color);
+    min-width: 80px;
+
+    &:hover {
+      background: $tab-hover;
+      color: #333;
+    }
+
+    &.active {
+      background: #fff;
+      color: $primary;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+      font-weight: 600;
+    }
+  }
+}
+
+.qm-content {
+  background: #fff;
+  border: 1px solid $border;
+  @include rounded(14px);
+  padding: 28px;
+}
+
+.qm-form {
+  @include flex-col(18px);
+}
+
+.qm-field {
+  @include flex-col(6px);
+  flex: 1;
+
+  label {
+    font-size: 13px;
+    font-weight: 600;
+    color: $text-mid;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+
+  input,
+  select {
+    @include input-base;
+  }
+}
+
+.qm-row {
+  @include flex-row(12px, flex-end);
+}
+
+.qm-operator {
+  font-size: 22px;
+  font-weight: 700;
+  color: $primary;
+  padding-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.qm-compare-vs {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  color: $primary;
+  padding: 2px 0;
+  letter-spacing: 1px;
+}
+
+.qm-btn {
+  padding: 12px 24px;
+  background: $primary;
+  color: #fff;
+  border: none;
+  @include rounded(8px);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  @include transition(background transform);
+  align-self: flex-start;
+
+  &:hover {
+    background: $primary-light;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+  }
+}
+
+.qm-result {
+  margin-top: 20px;
+  padding: 18px 20px;
+  background: $primary-faint;
+  border: 1px solid $primary-border;
+  @include rounded(10px);
+  text-align: center;
+
+  .qm-result-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: $primary-muted;
+    margin: 0 0 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .qm-result-value {
+    font-size: 28px;
+    font-weight: 700;
+    color: $primary;
+    margin: 0 0 4px;
+  }
+
+  .qm-result-expr {
+    font-size: 13px;
+    color: $text-light;
+    margin: 0;
+  }
+}
+
+.qm-error {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: $error-bg;
+  border: 1px solid $error-border;
+  @include rounded(8px);
+  color: $error-text;
+  font-size: 14px;
+}
+
+.qm-history-table {
+  overflow-x: auto;
+  margin-top: 8px;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  th {
+    background: $th-bg;
+    color: $primary;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid $th-border;
+  }
+
+  td {
+    padding: 9px 12px;
+    border-bottom: 1px solid #eee;
+    color: $text-table;
+  }
+
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  tr:hover td {
+    background: $row-hover;
+  }
+}
+
+.qm-empty {
+  text-align: center;
+  color: #aaa;
+  font-size: 14px;
+  margin-top: 10px;
+}

@@ -1,28 +1,17 @@
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+
+## React Compiler
+
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 # QuantityMeasurementApp-React
-
-QuantityMeasurementApp is a modern, responsive web application built with React that allows users to easily convert measurements between different units. Whether you need to convert length, weight, volume, or temperature, this app provides an intuitive interface for fast and accurate results. The application is designed with scalability in mind and follows best practices in React development, ensuring a smooth user experience.
-
-## Features
-
-- Supports conversions for various unit categories (length, weight, volume, temperature, and more)
-- User-friendly input forms and real-time conversion results
-- Clean, modern UI built with React components
-- Fast performance powered by Vite
-- Easily extendable to include additional measurement categories or custom units
-
-## Getting Started
-
-To run the app locally:
-
-1. Install dependencies:
-   npm install
-
-2. Start the development server:
-
-   npm run dev
-
-Open the link
-
-## Contributing
-
-Contributions and suggestions are welcome! Feel free to submit issues or pull requests to help improve the app.
